@@ -23,7 +23,7 @@ function App() {
           )}
         </div>
       </nav>
-      {user ? <Feed user={user} /> : <Login />}
+      {user ? <Feed /> : <Login />}
     </div>
   );
 }

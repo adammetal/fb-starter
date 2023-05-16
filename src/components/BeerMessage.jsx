@@ -73,7 +73,10 @@ function BeerMessage(props) {
 
     // validation?
     if (beer.length > 0 && type.length > 0 && message.length > 0) {
-      props.onSend({ beer, type, message })
+      props.onSend({ beer, type, message });
+      setBeer('');
+      setType('');
+      setMessage('');
     }
   };
 

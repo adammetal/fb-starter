@@ -3,6 +3,7 @@ import { collection, query, addDoc, serverTimestamp } from "firebase/firestore";
 import store from "../firebase/firestore";
 import BeerCard from "./BeerCard";
 import BeerMessage from "./BeerMessage";
+import { useAuth } from "../context/AuthContext";
 
 const beerConvert = {
   fromFirestore: (snap) => ({
@@ -16,12 +17,15 @@ const beerRef = collection(store, "beer-feed").withConverter(beerConvert);
 const beerQuery = query(beerRef);
 
 function Feed() {
+  const user = useAuth();
   const [items, loading] = useCollectionData(beerQuery);
 
   const handleSendMessage = async (message) => {
     await addDoc(beerRef, {
       ...message,
-      createdAt: serverTimestamp()
+      createdAt: serverTimestamp(),
+      userPhotoURL: user.photoURL,
+      uid: user.uid,
     });
   }
 
