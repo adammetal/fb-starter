@@ -1,11 +1,11 @@
-import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
-import auth from "./auth";
-import Login from "./Login";
-import Feed from "./Feed";
+import auth from "./firebase/auth";
+import Login from "./components/Login";
+import Feed from "./components/Feed";
+import { useAuth } from './context/AuthContext';
 
 function App() {
-  const [user] = useAuthState(auth);
+  const user = useAuth();
 
   const handleLogout = () => {
     signOut(auth);

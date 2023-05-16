@@ -1,6 +1,6 @@
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import { collection, query } from "firebase/firestore";
-import store from "./firestore";
+import store from "../firebase/firestore";
 import BeerCard from "./BeerCard";
 
 const beerConvert = {
