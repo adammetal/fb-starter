@@ -10,26 +10,31 @@ import Home from "./pages/Home";
 import "bootstrap/dist/css/bootstrap.min.css";
 import About from "./pages/About";
 import Message from "./pages/Message";
+import Protected from "./components/Protected";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '/',
-        element: <Home />
+        path: "/",
+        element: <Home />,
       },
       {
-        path: '/about',
-        element: <About />
+        path: "/about",
+        element: <About />,
       },
       {
-        path: '/message/:id',
-        element: <Message />
-      }
-    ]
-  }
+        path: "/message/:id",
+        element: (
+          <Protected>
+            <Message />
+          </Protected>
+        ),
+      },
+    ],
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
