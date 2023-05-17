@@ -1,16 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
+import AuthProvider from "./context/AuthContext";
+
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import AuthProvider from "./context/AuthContext";
+import About from "./pages/About";
+import Message from "./pages/Message";
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      {
+        path: '/',
+        element: <Home />
+      },
+      {
+        path: '/about',
+        element: <About />
+      },
+      {
+        path: '/message/:id',
+        element: <Message />
+      }
+    ]
+  }
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>
 );

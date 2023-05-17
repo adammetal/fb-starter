@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useAuth, useSignOut } from "../context/AuthContext";
 
 function Navbar() {
@@ -7,9 +8,14 @@ function Navbar() {
   return (
     <nav className="navbar mb-4" style={{ backgroundColor: "#f7df1e" }}>
       <div className="container-fluid">
-        <span className="navbar-brand mb-0 h1">Brewitter</span>
+        <span className="navbar-brand mb-0 h1 flex-grow-1">
+          <Link to="/">Brewitter</Link>
+        </span>
+        <Link to="/about" className="btn btn-secondary">
+          About
+        </Link>
         {user && (
-          <button className="btn btn-secondary" onClick={signOut}>
+          <button className="btn btn-secondary ms-2" onClick={signOut}>
             Logout
           </button>
         )}

@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
+
 function BeerCard(props) {
   const entry = props.entry;
 
   return (
     <div className="card">
       <div className="card-header d-flex align-items-center">
-        <h4 className="flex-grow-1 m-0">{entry.beer}</h4>
+        <h4 className="flex-grow-1 m-0">
+          <Link to={`/message/${entry.id}`}>{entry.beer}</Link>
+        </h4>
         <img
           style={{ width: "50px", height: "50px", borderRadius: "50%" }}
           referrerPolicy="no-referrer"
