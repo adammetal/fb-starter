@@ -15,9 +15,14 @@ function Navbar() {
           About
         </Link>
         {user && (
-          <button className="btn btn-secondary ms-2" onClick={signOut}>
-            Logout
-          </button>
+          <>
+            <Link to="/profile" className="btn btn-secondary ms-2">
+              Profile
+            </Link>
+            <button className="btn btn-secondary ms-2" onClick={signOut}>
+              Logout
+            </button>
+          </>
         )}
       </div>
     </nav>

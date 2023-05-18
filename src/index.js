@@ -11,6 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import About from "./pages/About";
 import Message from "./pages/Message";
 import Protected from "./components/Protected";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,14 @@ const router = createBrowserRouter([
         element: (
           <Protected>
             <Message />
+          </Protected>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <Protected>
+            <Profile />
           </Protected>
         ),
       },
