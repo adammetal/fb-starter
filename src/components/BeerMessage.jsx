@@ -111,7 +111,7 @@ function BeerMessage(props) {
 
           {/* .mb-2>label+textarea */}
           <div className="mb-2">
-            <label htmlFor="message">It was good?</label>
+            <label htmlFor="message">Was it good?</label>
             <textarea
               value={message}
               onChange={changeHandler(setMessage)}
