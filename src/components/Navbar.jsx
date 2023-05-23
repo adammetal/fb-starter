@@ -1,31 +1,32 @@
 import { Link } from "react-router-dom";
 import { useAuth, useSignOut } from "../context/AuthContext";
+import { AppBar, Button, Toolbar, Typography } from "@mui/material";
 
 function Navbar() {
   const user = useAuth();
   const signOut = useSignOut();
 
   return (
-    <nav className="navbar mb-4" style={{ backgroundColor: "#f7df1e" }}>
-      <div className="container-fluid">
-        <span className="navbar-brand mb-0 h1 flex-grow-1">
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/">Brewitter</Link>
-        </span>
-        <Link to="/about" className="btn btn-secondary">
-          About
+        </Typography>
+        <Link to="/about">
+          <Button color="inherit">About</Button>
         </Link>
         {user && (
           <>
-            <Link to="/profile" className="btn btn-secondary ms-2">
-              Profile
+            <Link to="/profile">
+              <Button color="inherit">Profile</Button>
             </Link>
-            <button className="btn btn-secondary ms-2" onClick={signOut}>
+            <Button color="inherit" onClick={signOut}>
               Logout
-            </button>
+            </Button>
           </>
         )}
-      </div>
-    </nav>
+      </Toolbar>
+    </AppBar>
   );
 }
 

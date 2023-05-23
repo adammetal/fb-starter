@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Paper, Typography } from "@mui/material";
 
 const types = [
   {
@@ -95,7 +96,10 @@ function BeerMessage(props) {
   };
 
   return (
-    <div className="card">
+    <Paper elevation={5} sx={{ padding: '.5rem' }}>
+      <Typography variant="h2">
+        Add new beer message!
+      </Typography>
       <div className="card-body">
         <form onSubmit={handleSubmit}>
           <div className="mb-2">
@@ -144,7 +148,7 @@ function BeerMessage(props) {
           </div>
         </form>
       </div>
-    </div>
+    </Paper>
   );
 }
 

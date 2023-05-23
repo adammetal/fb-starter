@@ -16,6 +16,7 @@ import store from "../firebase/firestore";
 import BeerCard from "./BeerCard";
 import BeerMessage from "./BeerMessage";
 import { useAuth } from "../context/AuthContext";
+import { Container } from "@mui/material";
 
 const beerConvert = {
   fromFirestore: (snap) => ({
@@ -78,7 +79,7 @@ function Feed() {
   }
 
   return (
-    <div className="container d-flex flex-column gap-2">
+    <Container sx={{ marginTop: '1rem' }} maxWidth="md">
       <BeerMessage onSend={handleSendMessage} />
       {items.map((item) => (
         <BeerCard
@@ -88,7 +89,7 @@ function Feed() {
           key={item.id}
         />
       ))}
-    </div>
+    </Container>
   );
 }
 
