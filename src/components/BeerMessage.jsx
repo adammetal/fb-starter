@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { Paper, Typography } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  Paper,
+  Select,
+  TextField,
+  Typography,
+  MenuItem,
+  Button,
+  Box,
+} from "@mui/material";
 
 const types = [
   {
@@ -75,9 +85,9 @@ function BeerMessage(props) {
     // validation?
     if (beer.length > 0 && type.length > 0 && message.length > 0) {
       props.onSend({ beer, type, message });
-      setBeer('');
-      setType('');
-      setMessage('');
+      setBeer("");
+      setType("");
+      setMessage("");
     }
   };
 
@@ -96,58 +106,66 @@ function BeerMessage(props) {
   };
 
   return (
-    <Paper elevation={5} sx={{ padding: '.5rem' }}>
-      <Typography variant="h2">
-        Add new beer message!
-      </Typography>
-      <div className="card-body">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-2">
-            <label htmlFor="beer">Name of the beer you drank</label>
-            <input
-              value={beer}
-              onChange={changeHandler(setBeer)}
-              id="beer"
-              className="form-control"
-              type="text"
-            />
-          </div>
+    <Paper elevation={5} sx={{ padding: ".5rem" }}>
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          margin: "1rem",
+        }}
+      >
+        <Typography variant="h2">Add new beer message!</Typography>
+        <div>
+          <TextField
+            value={beer}
+            onChange={changeHandler(setBeer)}
+            fullWidth={true}
+            id="beer"
+            label="Name of the beer you drank"
+            variant="outlined"
+          />
+        </div>
 
-          {/* .mb-2>label+textarea */}
-          <div className="mb-2">
-            <label htmlFor="message">Was it good?</label>
-            <textarea
-              value={message}
-              onChange={changeHandler(setMessage)}
-              className="form-control"
-              id="message"
-            />
-          </div>
+        <div>
+          <TextField
+            id="message"
+            label="Was it good?"
+            fullWidth
+            multiline
+            value={message}
+            onChange={changeHandler(setMessage)}
+          />
+        </div>
 
-          <div className="mb-2">
-            <label htmlFor="type">Type of a beer you drank</label>
-            <select
-              value={type}
-              onChange={changeHandler(setType)}
-              className="form-select"
+        <div>
+          <FormControl fullWidth>
+            <InputLabel id="type-label">Type of a beer you drank</InputLabel>
+            <Select
               id="type"
+              value={type}
+              labelId="type-label"
+              onChange={changeHandler(setType)}
+              label="type of a beer you drank"
             >
-              <option value="">Select a beer type</option>
+              <MenuItem value="">Select a beer type</MenuItem>
               {types.map((type) => (
-                <option key={type.name} value={type.name}>
+                <MenuItem key={type.name} value={type.name}>
                   {type.name} - {type.description}
-                </option>
+                </MenuItem>
               ))}
-            </select>
-          </div>
+            </Select>
+          </FormControl>
+        </div>
 
-          <div className="mb-2">
-            <button type="submit" className="btn btn-primary">
-              Send
-            </button>
-          </div>
-        </form>
-      </div>
+        <div>
+          <Button type="submit" variant="contained">
+            Send
+          </Button>
+        </div>
+      </Box>
     </Paper>
   );
 }
