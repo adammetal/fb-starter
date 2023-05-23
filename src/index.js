@@ -7,11 +7,17 @@ import AuthProvider from "./context/AuthContext";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import About from "./pages/About";
 import Message from "./pages/Message";
 import Protected from "./components/Protected";
 import Profile from "./pages/Profile";
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import './global.css';
 
 const router = createBrowserRouter([
   {
