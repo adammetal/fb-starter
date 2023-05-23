@@ -11,6 +11,7 @@ import {
   getDoc,
   setDoc,
   arrayUnion,
+  orderBy,
 } from "firebase/firestore";
 import store from "../firebase/firestore";
 import BeerCard from "./BeerCard";
@@ -27,7 +28,7 @@ const beerConvert = {
 };
 
 const beerRef = collection(store, "beer-feed").withConverter(beerConvert);
-const beerQuery = query(beerRef);
+const beerQuery = query(beerRef, orderBy('createdAt', 'desc'));
 
 function Feed() {
   const user = useAuth();
